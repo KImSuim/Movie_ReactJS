@@ -1,0 +1,31 @@
+<!-- 
+    1. html 코드를 작성한다. 
+    2. js에서 가져온다
+    3. event를 감지한다.
+    4. 데이터를 업데이트한다.
+    5. html에 업데이트
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- 1. html 코드를 작성한다.  -->
+    <span>Total clicks : 0</span>
+    <button id="btn">Click me</button>
+    <!-- 5. html에 업데이트 -->
+  </body>
+  <script>
+    // 2. js에서 가져온다
+    let counter = 0;
+    // *주의 ()안에 html코드를 작성할 떄 오타가 있으면 적용이 안된다.*
+    const button = document.getElementById('btn');
+    const span = document.querySelector('span');
+    // 3. event를 감지한다.
+    function handleClick() {
+      // 4. 데이터를 업데이트한다.
+      counter = counter + 1;
+      span.innerText = `Total clicks: ${counter}`;
+    }
+    button.addEventListener('click', handleClick);
+  </script>
+</html>

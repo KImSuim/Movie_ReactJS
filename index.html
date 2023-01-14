@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <!-- 1. react 선언 -->
+  <!-- React JS는 어플리케이션이 아주 interactive하도록 만들어주는 library이고 react-dom은 library 또는 package인데 react element들을 html body에 둘 수 있도록 함 -->
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <!-- react-dom은 react element를 html에 두는 역할을 함 -->
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script>
+    //React JS로 element를 생성
+    //()안에는 html 태그와 똑같은 이름이어야만 함
+
+    const root = document.getElementById('root');
+    const span = React.createElement('span');
+    //render : react element를 가지고 hhtml만들어서 배치함 즉, 사용자한테 보여줌
+    ReactDOM.render(span, root);
+  </script>
+</html>
