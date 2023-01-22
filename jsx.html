@@ -8,42 +8,39 @@
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="text/bable">
-        const root = document.getElementById('root');
+  <script type="text/babel">
+    const root = document.getElementById('root');
 
-        <!-- html element는 html태그처럼 열고 닫아주면 됨 -->
-        <!-- content는 html처럼 태그 안에 적으면 됨 -->
-        <!-- property는 html의 속성처럼 적으면 됨 -->
+    // html element는 html태그처럼 열고 닫아주면 됨
+    // content는 html처럼 태그 안에 적으면 됨
+    // property는 html의 속성처럼 적으면 됨
 
-        <!--
-          const에서 = () => ()는 function return을 말한다.
-         -->
-        function Title () {
-          return(
-            <h3 id="title" onMouseEnter={() => console.log('mouse enter')}>
-            Hello Im a h3
-            </h3>
-          );
-        }
-    <!-- 소괄호는 retrun 한다는걸 전제로하는 것이고, 중괄호는 return을 안한다는걸 전제 -->
-        const Button = () => (
-          <button
-            style={{ backgroundColor: 'tomato', }}
-            onClick={() => console.log("I'm clicked")}
-          >
-            Click me
-          </button>
-        );
+    // const에서 = () => ()는 function return을 말한다.
+    function Title() {
+      return (
+        <h3 id="title" onMouseEnter={() => console.log('mouse enter')}>
+          Hello Im a h3
+        </h3>
+      );
+    }
+    // 소괄호는 retrun 한다는걸 전제로하는 것이고, 중괄호는 return을 안한다는걸 전제
+    const Button = () => (
+      <button
+        style={{ backgroundColor: 'tomato' }}
+        onClick={() => console.log("I'm clicked")}
+      >
+        Click me
+      </button>
+    );
 
-        <!-- 아래와 같이 선언을 하려면 컴포넌트를 함수로 선언 해줘야한다. -->
-        const Container = () => (
-          <div>
-            <!-- 컴포넌트의 첫 글자는 반드시 대문자여야 한다.
-            (소문자로 쓰게 된다면 html태그라고 생각을 한다.) -->
-            <Title /> <Button />
-          </div>
-        );
+    // 아래와 같이 선언을 하려면 컴포넌트를 함수로 선언 해줘야한다.
+    const Container = () => (
+      // 컴포넌트의 첫 글자는 반드시 대문자여야 한다. (소문자로 쓰게 된다면 html태그라고 생각을 한다.)
+      <div>
+        <Title /> <Button />
+      </div>
+    );
 
-        ReactDOM.render(<Container />, root);
+    ReactDOM.render(<Container />, root);
   </script>
 </html>

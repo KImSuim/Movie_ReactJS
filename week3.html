@@ -1,0 +1,48 @@
+<!-- state -->
+<!-- react js로 data 넣는 변수 없이 업데이트하는 걸 어떻게 도와주는지 배우기 -->
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById('root');
+    // let counter = 0;
+    // function countUp() {
+    //     counter = counter +1;
+    //     // 데이터가 바뀔때마다 UI에 적용을 하기위해 리렌더링해야한다.
+    //     return();
+    // }
+    // function render() {
+    //     ReactDOM.render(<App />, root)
+    // }
+
+    function App() {
+      // 업데이트를 이벤트와 변수 선언을 한줄로 해줌
+      // 규칙1. 함수에서 return문 전에 상수를 만들어줘야한다.
+      // undefined 담으려는 값과 함수(값을 바꿀때 사용할 modifier)를 지닌 배열을 받는다. ex) [undefined, f]
+      const [counter, modifier] = React.useState(0);
+      return (
+        // <div>
+        //     // Vanilla js는 태그들까지 모두 업데이트가 되는 것을 보이지만
+        //     // React js는 값만 업데이트가 되는 것을 볼 수 있다. 즉, 새로 생성이 되는 것이 아닌 바뀌는 부분만 변경이 된다. => 인터렉티브한 어플을 만들 수 있다는 뜻
+        //     <h3>Total clicks : {counter}</h3>
+        //     <button onClick={countUp}>Click me</button>
+        //   </div>
+
+        <div>
+          <h3>Total clicks : {counter}</h3>
+          <button>Click me</button>
+        </div>
+      );
+      // 배열안에 있는 요소를 꺼낼 때
+      const food = ['tomato', 'potato'];
+      //[]안에 위 요소를 넣을 변수명(아무거나 다 됨)을 넣어주면 요소를 꺼낼 수 있음
+      const [A, B] = food;
+    }
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
