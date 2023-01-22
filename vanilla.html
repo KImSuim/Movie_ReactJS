@@ -1,7 +1,9 @@
+<!-- 바닐라 js로 간단한 어플리케이션 만들기 -->
+
 <!-- 
     1. html 코드를 작성한다. 
     2. js에서 가져온다
-    3. event를 감지한다.
+    3. event를 감지한다. ()안에 event를 적을 때 오타가 있으면 적용이 안되고 오타가 있다고 말도 안해줌
     4. 데이터를 업데이트한다.
     5. html에 업데이트
 -->
@@ -15,17 +17,18 @@
     <!-- 5. html에 업데이트 -->
   </body>
   <script>
-    // 2. js에서 가져온다
     let counter = 0;
-    // *주의 ()안에 html코드를 작성할 떄 오타가 있으면 적용이 안된다.*
+    // 2. js에서 가져온다
+    // *주의 ()안에 html코드를 작성할 때 오타가 있으면 적용이 안된다.*
     const button = document.getElementById('btn');
     const span = document.querySelector('span');
-    // 3. event를 감지한다.
     function handleClick() {
       // 4. 데이터를 업데이트한다.
       counter = counter + 1;
+      //* html에도 업데이트 시켜주기
       span.innerText = `Total clicks: ${counter}`;
     }
+    // 3. event를 감지한다.
     button.addEventListener('click', handleClick);
   </script>
 </html>
