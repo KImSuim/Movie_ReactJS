@@ -1,0 +1,53 @@
+<!-- Props Types -->
+<!-- 컴포먼트의 환경을 원하는 만큼 설정할 수 있게 하는 거 -->
+<!-- number 형태로 입력을 받아야하는데 String 형태로 입력이 되는 걸 방지할 때 많이 쓰인다. -->
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    //기본값을 설정은 ( )안에서
+    //function Btn(text, fontSize=16) {
+    //이렇게 해주면 된다.
+    function Btn(text, fontSize) {
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            backgroundColor: 'tomato',
+            color: 'whith',
+            padding: '10px 20px',
+            border: 0,
+            borderRadius: 10,
+            fontSize,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    //props에서 다른 타입으로 작성을 하면 UI에서는 오류가 뜨지 않고 consloe에서만 오류가 뜬다.
+    //구문은 맞기 떄문에 UI에서는 잘 나옴
+    //.isRequired : 값이 꼭 있어야 할때 쓰는 것.
+
+    Btn.prototype = {
+      text: prototype.string.isRequired,
+      fontSize: prototype.number.isRequired,
+    };
+
+    function App() {
+      return (
+        <div>
+          <Btn text="Save CHanges" fontSize={18} />
+        </div>
+      );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</html>

@@ -1,0 +1,91 @@
+<!-- 설정들을 넘겨 줄 수 있는 컴포먼트 만들기 -->
+<!-- 똑같은 코드 반복일 때 유용하게 쓰인다. -->
+
+<!-- Btn을 렌더링하는 컴포먼트가 어떻게 되는지 알아보기 -->
+<!-- 부모 컴포먼트가 state(상태)를 변경할 때 어떤 일이 일어나는지 알아보기 -->
+
+<!-- React Memo -->
+<!-- 필요없는 props들까지 바뀌는 것을 방지하기 위한 것 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    //이와 같이 반복되는 코드가 많으면 컴포먼트를 만들어서 사용한다.
+    // function SaveBtn() {
+    //   return (
+    //     <button
+    //       style={{
+    //         backgroundColor: 'tomato',
+    //         color: 'whith',
+    //         padding: '10px 20px',
+    //         border: 0,
+    //         borderRadius: 10,
+    //       }}
+    //     >
+    //       {' '}
+    //       Save Changes
+    //     </button>
+    //   );
+    // }
+    // function ConfirmBtn() {
+    //   return (
+    //     <button
+    //       style={{
+    //         backgroundColor: 'tomato',
+    //         color: 'whith',
+    //         padding: '10px 20px',
+    //         border: 0,
+    //         borderRadius: 10,
+    //       }}
+    //     >
+    //       Confirm
+    //     </button>
+    //   );
+    // }
+
+    // ( )안에 인자를 넣어 스타일은 그대로지만 인자의 값만 다른 버튼을 만들 수 있다.
+    //여기에 prop을 불러와 이벤트리스너를 선언해줘야 졸아간다.
+    function Btn(text) {
+      return (
+        <button
+          onClick={changeValue}
+          style={{
+            backgroundColor: 'tomato',
+            color: 'whith',
+            padding: '10px 20px',
+            border: 0,
+            borderRadius: 10,
+          }}
+        >
+          {text}
+        </button>
+      );
+    }
+    //React memo => state와 연결이 되어 있는 props는 state의 값이 변할때마다 연결된 props 모두 변한다. 필요없는 props들까지 바뀌는 것을 방지하기 위한 것
+    const MemorizedBtn = React.memo();
+    function App() {
+      const [value, setValue] = React.useState('Save Changes');
+      const ChangeValue = () => setValue('Revert Changes');
+      return (
+        //커스텀 컴포먼트에는 이벤트라스너, 스타일 등등 선언을 해도 정상적으로 작동이 안된다.
+        //선언해준 곳에 인수와 이벤트리스너를 추가해야 정상적으로 돌아간다.
+        //이벤트리스너와 이름은 같더라도 이벤트리스너가 아닌 prop다 즉 html에 선언이 안된다.
+
+        <div>
+          //위의 state와 연결이 되어 있어서 값이 변경이 될때마다 props도 변경이
+          된다.
+          <MemorizedBtn text={value} changeValue={changeValue} />
+          <MemorizedBtn text="Continue" />
+        </div>
+      );
+    }
+    const root = document.getElementById('root');
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
